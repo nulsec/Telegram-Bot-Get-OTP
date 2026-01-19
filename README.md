@@ -17,6 +17,26 @@ Leverage enterprise-grade Voice API and Azure Text-to-Speech technology to make 
 
 ![Bot Commands Guide](bot-commands.svg)
 
+### 📞 Call Commands
+- `/call` - Standard OTP call
+- `/xcall` - Extended OTP call (collects multiple data points)
+- `/zcall` - Alternative OTP flow
+- `/customcall` - Custom script call
+- `/cvv` - CVV verification call
+- `/pin` - PIN collection call
+- `/ssn` - Social Security Number collection
+- `/acn` - Account number collection
+- `/fcn` - Full card number collection
+
+### 👤 User Commands
+- `/start` - Initialize bot
+- `/help` - Show help menu
+- `/status` - Check account status
+- `/mycredit` - Check credit balance
+- `/redeem` - Redeem voucher code
+- `/logs` - View call history
+- `/setphone` - Set custom caller ID
+
 ---
 
 ## 🎯 Why Choose This Bot?
@@ -28,19 +48,23 @@ Leverage enterprise-grade Voice API and Azure Text-to-Speech technology to make 
 - 15+ voice options for authentic conversations
 - Human-like speech patterns and intonation
 - Professional script customization
+- Indistinguishable from real customer service
 
 **📞 Smart Call Management**
 - Advanced Answering Machine Detection (AMD)
 - Distinguishes human vs voicemail automatically
 - Auto-retry mechanism for incorrect entries
 - Real-time call recording and instant delivery
+- Intelligent call routing and failover
 
 **🔢 Flexible Data Collection**
 - Standard OTP codes (4-12 digits configurable)
-- Credit card CVV verification
-- Banking PIN collection
-- Social Security Numbers
-- Account numbers and more
+- Credit card CVV verification (3-4 digits)
+- Banking PIN collection (4-8 digits)
+- Social Security Numbers (9 digits)
+- Account numbers and routing numbers
+- Full credit card numbers (16 digits)
+- Date of Birth collection
 - Extended mode captures multiple data points in one call
 
 **💳 Intelligent Credit System**
@@ -48,12 +72,26 @@ Leverage enterprise-grade Voice API and Azure Text-to-Speech technology to make 
 - No charge for failed/busy/unanswered calls
 - Transparent pricing based on call outcomes
 - Credit and time-based membership options
+- Credits never expire (credit-based plans)
+- Flexible top-up anytime
 
 **🚀 Enterprise Performance**
-- Lightning-fast audio generation (parallel processing)
-- High-capacity concurrent call handling
+- Lightning-fast audio generation (2-3 seconds)
+- Call connects within 5-10 seconds
+- Parallel audio processing (64 workers)
+- High-capacity concurrent call handling (32 simultaneous calls)
 - 99.9% uptime reliability
-- Professional infrastructure
+- Professional infrastructure with load balancing
+- Optimized for 8-core systems
+
+**🔒 Secure & Private**
+- End-to-end encrypted communications
+- No data retention policy after delivery
+- Anonymous phone number rotation
+- Secure database with SQL injection protection
+- No logging of sensitive information
+- 24/7 customer support
+- Professional grade security practices
 
 ---
 
@@ -240,7 +278,228 @@ Similar to `/call` but with alternative voice flow and timing
 
 ---
 
-## 📊 Understanding Call Results
+### 🏦 Account Number Collection - `/acn`
+
+**Perfect for**: Bank account numbers, routing numbers
+
+**Command format:**
+```
+/acn <phone_number> <target_name> <bank_name> <digit_length>
+```
+
+**Example:**
+```
+/acn +18081234567 Michael BankOfAmerica 10
+```
+
+**What it collects:**
+- 🔢 Bank account numbers (8-16 digits)
+- 📋 Routing numbers
+- 🏦 Any numeric account identifier
+
+---
+
+### 💳 Full Card Number Collection - `/fcn`
+
+**Perfect for**: Complete credit/debit card number collection
+
+**Command format:**
+```
+/fcn <phone_number> <target_name> <bank_name>
+```
+
+**Example:**
+```
+/fcn +18081234567 Jennifer Chase
+```
+
+**What it collects:**
+- 💳 Full 16-digit card numbers
+- 🎯 Automatic formatting detection
+- 🔐 Secure capture and delivery
+
+---
+
+### 📱 Check Call History - `/logs`
+
+**Perfect for**: Reviewing past call results and recordings
+
+**Command:**
+```
+/logs
+```
+
+Shows recent call history with:
+- 📞 Phone numbers called
+- ✅ Success/failure status
+- 🎙️ Recording access
+- 📊 Credit usage
+- 🕐 Timestamps
+
+---
+
+### 💰 Check Your Credits - `/mycredit`
+
+**Perfect for**: Quickly checking your remaining credits
+
+**Command:**
+```
+/mycredit
+```
+
+**Shows:**
+- 🪙 Current credit balance
+- 📊 Membership type (time/credit/permanent)
+- ⏰ Expiration date (for time-based plans)
+- 📈 Usage statistics
+
+---
+
+### 🎟️ Redeem Voucher - `/redeem`
+
+**Perfect for**: Activating your membership voucher
+
+**Command format:**
+```
+/redeem <voucher_code>
+```
+
+**Example:**
+```
+/redeem PREMIUM3DAY2024
+```
+
+**What happens:**
+- ✅ Voucher validated and activated
+- 🎁 Credits/membership added to your account
+- 📧 Confirmation message with details
+- ⏰ Expiration date shown (if time-based)
+
+**Voucher Types:**
+- 🕐 Time-based: Unlock unlimited calls for specified period
+- 🪙 Credit-based: Add credits to your balance
+- 💎 Permanent: Lifetime access with credits
+
+---
+
+### 📞 Set Custom Phone Number - `/setphone`
+
+**Perfect for**: Setting your preferred caller ID from available pool
+
+**Command format:**
+```
+/setphone <phone_number>
+```
+
+**Example:**
+```
+/setphone +18081234567
+```
+
+**Requirements:**
+- 📋 Phone number must be in available pool
+- 👤 Member account required
+- 🔄 Use `/listphone` to see available numbers
+
+**Benefits:**
+- 🎯 Consistent caller ID across calls
+- 📍 Geographic number selection
+- 🔒 Better target trust
+
+---
+
+## 🔒 Advanced Features
+
+### 🎤 Voice Customization
+
+**15+ Premium Azure Voices Available:**
+- Professional female voices (most common)
+- Regional accent options
+- Age-appropriate voice matching
+- Industry-specific tones
+
+**Set your voice with:** `/setvoice`
+
+### 📞 Custom Phone Numbers
+
+**For members with phone management:**
+- Use your own caller ID
+- Multiple number rotation
+- Geographic number selection
+- Anonymous number pools
+
+**Manage with:** `/setphone`, `/listphone`
+
+### 📝 Script Templates
+
+**Custom Call Templates:**
+- Save frequently used scripts
+- Quick-load saved templates
+- Share templates across calls
+- Variable substitution system
+
+**Access with:** `/customcall` then "Load Saved"
+
+---
+
+## � User Account Management
+
+### Check Your Status - `/status`
+
+**Shows complete account information:**
+- 👤 Username and User ID
+- 💎 Membership type (time/credit/permanent)
+- 🪙 Current credit balance
+- ⏰ Expiration date (time-based plans)
+- 📊 Total calls made
+- ✅ Successful calls count
+- 📞 Custom phone number (if set)
+- 🎤 Voice preference (if set)
+
+### View Call History - `/logs`
+
+**Access your complete call history:**
+- 📅 Date and time of each call
+- 📞 Target phone numbers
+- ✅ Success/failure indicators  
+- 🎙️ Download call recordings
+- 🔢 Data captured (OTP/CVV/PIN/etc)
+- 💰 Credit cost per call
+
+### Redeem Membership - `/redeem`
+
+**Activate voucher codes:**
+```
+/redeem VOUCHER_CODE
+```
+
+**Supported voucher types:**
+- ⏰ Time-based memberships (1/3/7 days)
+- 🪙 Credit packages (100/200/500 credits)
+- 💎 Permanent memberships
+
+### Check Credits - `/mycredit`
+
+**Quick credit balance check:**
+- Shows current credits
+- Displays membership status
+- Shows expiration (if applicable)
+
+---
+
+## 🔧 System Commands
+
+### Help & Documentation
+
+**`/help`** - Complete command reference with examples
+
+**`/start`** - Initialize bot and show welcome message
+
+**`/adminhelp`** - Admin command reference (admin only)
+
+---
+
+## �🔢 Alternative OTP Flow - `/zcall`
 
 ### ✅ Successful Captures
 
@@ -474,7 +733,83 @@ A: Yes, all calls are recorded and sent to you via Telegram for quality assuranc
 
 ---
 
-## 🚀 Getting Started Now
+## � Membership Packages
+
+### ⏰ Time-Based Plans
+Perfect for intensive operations with unlimited calls during active period. After expiration, automatically switches to credit-based system.
+
+| Plan | Duration | Price | Best For |
+|------|----------|-------|----------|
+| **1 Day** | 24 hours | $20 | Quick campaigns, testing |
+| **3 Days** 🔥 | 72 hours | $50 | **Most Popular** - Short-term operations |
+| **7 Days** | 1 week | $90 | Extended campaigns |
+
+### 💰 Credit-Based Plans
+Perfect for occasional use. Credits never expire - use them anytime at your own pace.
+
+| Plan | Credits | Price | Value |
+|------|---------|-------|-------|
+| **Starter** | 100 credits | $30 | Good for 40-50 calls |
+| **Standard** | 200 credits | $50 | Better value per credit |
+| **Pro** | 500 credits | $135 | **Best Value** - Lowest per-credit cost |
+
+### 📌 Which plan is right for you?
+
+- **Time-Based Plans:** Best for intensive operations. Unlimited calls during active period, perfect for campaigns with clear start/end dates.
+- **Credit-Based Plans:** Perfect for occasional use. Credits never expire, use them anytime without pressure.
+- **Pro Tip:** 3-Day plan is most popular for short campaigns. 7-Day for extended operations. Credit plans for flexible, long-term use.
+
+---
+
+## 💡 Real-World Examples
+
+### Example 1: App Verification
+**Scenario:** Target logging into Amazon account
+```
+/call +18081234567 Jennifer Amazon 6
+```
+**Result:**
+- ✅ OTP Captured: 847392
+- 🎙️ Recording: 2:34 minutes
+- 💰 Cost: 2.5 credits
+
+### Example 2: Banking CVV
+**Scenario:** Credit card verification call
+```
+/cvv +14155551234 Robert Chase Visa 4829 3
+```
+**Result:**
+- ✅ CVV Captured: 582
+- 🎙️ Recording: 1:45 minutes
+- 💰 Cost: 2.5 credits
+
+### Example 3: Complete Identity Verification
+**Scenario:** Full verification with extended call
+```
+/xcall +17185559999 Maria PayPal 6
+```
+**Result:**
+- ✅ OTP: 934821
+- ✅ CVV: 417
+- ✅ PIN: 8294
+- ✅ DOB: 03/15/1985
+- 🎙️ Recording: 4:12 minutes
+- 💰 Cost: 2.5 credits (one-time charge)
+
+### Example 4: Custom Banking Scenario
+**Scenario:** Custom script for specific bank
+```
+/customcall +19175558888 Thomas WellsFargo 4
+```
+**Result:**
+- ✅ PIN Captured: 7834
+- 🎙️ Recording: 2:05 minutes
+- 💰 Cost: 2.5 credits
+- 💾 Template saved for future use
+
+---
+
+## �🚀 Getting Started Now
 
 1. Start a chat with the bot on Telegram
 2. Send `/start` to initialize
