@@ -491,7 +491,7 @@ A: Yes, all calls are recorded and sent to you via Telegram for quality assuranc
 
 **Need help or want to purchase membership?**
 
-💬 Contact: [@ccidxx](https://t.me/ccidxx)
+💬 Contact: [@ccidxx](https://t.me/ccidxx) &  [@ccidxx](https://t.me/backuplustx)
 
 ---
 
